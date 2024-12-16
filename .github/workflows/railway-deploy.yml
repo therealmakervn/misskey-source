@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         
+      - name: Build Misskey
+        run: pnpm run build
+        
       - name: Install Railway CLI
         run: npm install -g @railway/cli
 
@@ -36,7 +39,5 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          railway up \
-            --service ${{ github.event.repository.name }} \
-            --environment production \
-            --detach
+          railway link --environment production
+          railway up --detach
