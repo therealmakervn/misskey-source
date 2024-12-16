@@ -11,6 +11,9 @@ RUN corepack enable
 
 WORKDIR /misskey
 
+# Add cache mount for pnpm
+RUN --mount=type=cache,target=/root/.local/share/pnpm/store,id=pnpm-store mkdir -p /root/.local/share/pnpm/store
+
 COPY ["pnpm-lock.yaml", "pnpm-workspace.yaml", "package.json", "./"]
 COPY ["scripts", "./scripts"]
 COPY ["packages/backend/package.json", "./packages/backend/"]
