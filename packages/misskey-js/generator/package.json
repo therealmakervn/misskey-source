@@ -19,5 +19,8 @@
 	},
 	"files": [
 		"built"
-	]
+	],
+	"dependencies": {
+		"misskey-js-type-generator": "file:"
+	}
 }
